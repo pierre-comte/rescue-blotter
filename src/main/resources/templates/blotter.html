@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"  layout:decorate="~{layout}">
+<head>
+    <title>Order Blotter</title>
+</head>
+<body>
+
+<!-- Replace the content of the parent layout -->
+<div layout:fragment="content">
+    <h1 class="text-center mb-4">Order Blotter</h1>
+
+    <div class="row mb-4">
+        <div class="col">
+            <button hx-get="/blotter-refresh" hx-trigger="click" hx-target="#orderTable" class="btn btn-primary">Refresh Orders</button>
+        </div>
+    </div>
+
+    <div id="orderTable">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>State</th>
+                    <th>Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="order : ${orders}">
+                    <td th:text="${order.id}"></td>
+                    <td th:text="${order.state}"></td>
+                    <td th:text="${order.amount}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

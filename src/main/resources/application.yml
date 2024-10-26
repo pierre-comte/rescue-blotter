@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: rescue-blotter
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+config:
+  user:
+    login: ${USER_LOGIN}
+    password: ${USER_PASSWORD}

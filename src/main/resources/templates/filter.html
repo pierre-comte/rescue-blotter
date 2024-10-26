@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Order Filter</title>
+</head>
+<body>
+
+<!-- Extend the base layout -->
+<div layout:fragment="content">
+    <h1 class="text-center mb-4">Filter Orders</h1>
+
+    <!-- Filter Form -->
+    <form class="row g-3" hx-get="/search" hx-target="#orderTable" hx-swap="outerHTML">
+        <div class="col-md-4">
+            <label for="state" class="form-label">State</label>
+            <input type="text" class="form-control" id="state" name="state" placeholder="State">
+        </div>
+        <div class="col-md-4">
+            <label for="minAmount" class="form-label">Min Amount</label>
+            <input type="number" class="form-control" id="minAmount" name="minAmount" placeholder="Minimum Amount">
+        </div>
+        <div class="col-md-4">
+            <label for="maxAmount" class="form-label">Max Amount</label>
+            <input type="number" class="form-control" id="maxAmount" name="maxAmount" placeholder="Maximum Amount">
+        </div>
+
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    <!-- Results Table -->
+    <div id="orderTable" class="mt-4 table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>State</th>
+                <th>Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Order results go here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
