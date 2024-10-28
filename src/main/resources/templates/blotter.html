@@ -9,6 +9,33 @@
 <div layout:fragment="content">
     <h1 class="text-center mb-4">Order Blotter</h1>
 
+    <p class="d-inline-flex gap-1">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Filter orders
+        </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <!-- Filter Form -->
+        <form class="row g-3" hx-get="/search" hx-target="#orderTable" hx-swap="outerHTML">
+            <div class="col-md-4">
+                <label for="state" class="form-label">State</label>
+                <input type="text" class="form-control" id="state" name="state" placeholder="State">
+            </div>
+            <div class="col-md-4">
+                <label for="minAmount" class="form-label">Min Amount</label>
+                <input type="number" class="form-control" id="minAmount" name="minAmount" placeholder="Minimum Amount">
+            </div>
+            <div class="col-md-4">
+                <label for="maxAmount" class="form-label">Max Amount</label>
+                <input type="number" class="form-control" id="maxAmount" name="maxAmount" placeholder="Maximum Amount">
+            </div>
+
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+    </div>
+
     <div class="row mb-4">
         <div class="col">
             <button hx-get="/blotter-refresh" hx-trigger="click" hx-target="#orderTable" class="btn btn-primary">Refresh Orders</button>
